@@ -9,6 +9,7 @@ fn main() {
         std::io::stdin().read_line(&mut input).expect("Failed to read line");
         let direction = input.trim();
         if direction == "e" {
+            println!("Ending the program.");
             break;
         }
         arraymap::move_player(&mut map, direction);
