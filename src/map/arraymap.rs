@@ -1,5 +1,5 @@
 
-pub fn print_map (map: &mut [[String; 5]; 5]) {
+pub fn print_map (map: &mut [[char; 5]; 5]) {
     for row in map.iter() {
         for (i, cell) in row.iter().enumerate() {
             if i == row.len() - 1 {
@@ -12,30 +12,30 @@ pub fn print_map (map: &mut [[String; 5]; 5]) {
     }
 
 }
-pub fn create_map() -> [[String; 5]; 5] {
+pub fn create_map() -> [[char; 5]; 5] {
     let map = [
-        [String::from("*"), String::from("*"), String::from("*"), String::from("*"), String::from("*")],
-        [String::from("*"), String::from("*"), String::from("*"), String::from("*"), String::from("*")],
-        [String::from("*"), String::from("*"), String::from("x"), String::from("*"), String::from("*")],
-        [String::from("*"), String::from("*"), String::from("*"), String::from("*"), String::from("*")],
-        [String::from("*"), String::from("*"), String::from("*"), String::from("*"), String::from("*")]
+        [ '*', '*', '*', '*', '*' ],
+        [ '*', '*', '*', '*', '*' ],
+        [ '*', '*', 'x', '*', '*' ],
+        [ '*', '*', '*', '*', '*' ],
+        [ '*', '*', '*', '*', '*' ]
     ];
     map
 }
-pub fn move_player(map: &mut [[String; 5]; 5], direction: &str) {
+pub fn move_player(map: &mut [[char; 5]; 5], direction: &str) {
     let mut player_x = 0;
     let mut player_y = 0;
 
     for (y, row) in map.iter().enumerate() {
         for (x, cell) in row.iter().enumerate() {
-            if *cell == "x" {
+            if *cell == 'x' {
                 player_x = x;
                 player_y = y;
             }
         }
     }
     
-    map[player_y][player_x] = String::from("*");
+    map[player_y][player_x] = '*';
     match direction {
         "w" => {
             if player_y > 0 {
@@ -70,5 +70,5 @@ pub fn move_player(map: &mut [[String; 5]; 5], direction: &str) {
         },
         _ => println!("Invalid direction! Use 'w', 's', 'a' or 'd   '.")
     }
-    map[player_y][player_x] = String::from("x");
+    map[player_y][player_x] = 'x';
 }
