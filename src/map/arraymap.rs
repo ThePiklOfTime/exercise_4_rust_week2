@@ -1,10 +1,14 @@
 
 pub fn print_map (map: &mut [[String; 5]; 5]) {
     for row in map.iter() {
-        for cell in row.iter() {
-            print!("{} ", cell);
+        for (i, cell) in row.iter().enumerate() {
+            if i == row.len() - 1 {
+                print!("{}\n", cell);
+            }else {
+                 print!("{} ", cell);
+            }
+           
         }
-        println!();
     }
 
 }
